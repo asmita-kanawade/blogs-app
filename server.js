@@ -21,14 +21,14 @@ app.use(bodyParser.json());
 
 
 //Render html
-app.get('/', function (req, res) {
+// app.get('/', function (req, res) {
 
-  console.log("inside app.get:/");
+//   console.log("inside app.get:/");
 
-  fs.readFile("view/index.html", function (err, data) {
-    res.send(data.toString())
-  })
-});
+//   fs.readFile("view/index.html", function (err, data) {
+//     res.send(data.toString())
+//   })
+// });
 
 /***********************************************************************************************/
 //Blogs api start here
