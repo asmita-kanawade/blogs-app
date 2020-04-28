@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const fs = require('fs');
 const mongoose = require("mongoose");
 const BlogsModel = require("./model/blogsModel");
 const BloggersModel = require("./model/bloggersModel");
 const dotenv = require("dotenv");
+
 
 dotenv.config();
 mongoose.set("useFindAndModify", false);
@@ -18,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+app.use(cors());
 
 
 //Render html
@@ -57,7 +61,7 @@ app.get('/', function (req, res) {
 
 
 /**--- Get/Search the Blog Posts ---*/
-app.get('/api/search-blogs', async (req, res) => {
+app.post('/api/search-blogs', async (req, res) => {
 
   console.log("inside /api/search-blogs");
 
