@@ -57,7 +57,7 @@ app.get('/', function (req, res) {
 
 
 /**--- Get/Search the Blog Posts ---*/
-app.post('/api/search-blogs', async (req, res) => {
+app.get('/api/search-blogs', async (req, res) => {
 
   console.log("inside /api/search-blogs");
 
