@@ -46,7 +46,6 @@ app.get('/', function (req, res) {
 
     let blogs = await BlogsModel.find({}, null, { sort: {_id: 1} });
 
-    //console.log(`Birthdays: ${birthdays}`);
     res.send(blogs);
     
   } catch (error) {
@@ -70,7 +69,6 @@ app.post('/api/search-blogs', async (req, res) => {
 
     let blogs = await BlogsModel.find(conditions, null, { sort: {title: 1} });
 
-    //console.log(`Birthdays: ${birthdays}`);
     res.send(blogs);
     
   } catch (error) {
@@ -98,8 +96,8 @@ app.post('/api/add-blog',  async (req, res) => {
  
     await blogSchema.save();
  
-    //res.redirect(307, "/api/search-blogs");
-    res.send(`Blog post saved with title ${blog.title}`);
+    res.redirect(307, "/api/search-blogs");
+    //res.send(`Blog post saved with title ${blog.title}`);
  
   } catch (err) {
     console.log("error in post :"+ err);
@@ -125,8 +123,8 @@ app.post('/api/update-blog',  async (req, res) => {
         body:blogs.body
       });
 
-    // res.redirect(307, "/api/search-blogs")
-    res.send("updated..!");
+     res.redirect(307, "/api/search-blogs")
+    //res.send("updated..!");
      
   } catch (err) {
  
@@ -144,7 +142,6 @@ app.post(`/api/delete-blog`, async (req, res) => {
   console.log("inside /api/delete-blog");
   
   const blog = req.body;
-  //console.log(`Birthday by post: ${JSON.stringify(birthday)}`);
 
   try {
 
@@ -211,8 +208,6 @@ app.post('/api/signup',  async (req, res) => {
   console.log("inside /signup");
   
   const blogger = req.body;
-  //console.log(`Birthday by post: ${JSON.stringify(birthday)}`);
-
   try {
 
     //check if user is already registered with same email
