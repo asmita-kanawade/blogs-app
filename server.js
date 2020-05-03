@@ -114,6 +114,8 @@ app.post('/api/update-blog',  async (req, res) => {
   console.log("inside /api/update-blog");
   
   const blogs = req.body;
+  //console.log(`blogs: ${JSON.stringify(blogs)}`);
+  
   
   try {
 
@@ -123,8 +125,8 @@ app.post('/api/update-blog',  async (req, res) => {
         body:blogs.body
       });
 
-     res.redirect(307, "/api/search-blogs")
-    //res.send("updated..!");
+      res.redirect(307, "/api/search-blogs")
+    //res.send("updated..!"+ blogs.title,);
      
   } catch (err) {
  
@@ -211,7 +213,7 @@ app.post('/api/signup',  async (req, res) => {
   try {
 
     //check if user is already registered with same email
-    let bloggers = await BloggersModel.find(blogger);
+    let bloggers = await BloggersModel.find({username: blogger.username});
     //console.log(`Existing bloggers: ${JSON.stringify(bloggers)}`);
     
     // if user is not already registered
